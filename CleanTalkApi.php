@@ -71,7 +71,8 @@ class CleanTalkApi extends CApplicationComponent
         $this->lastResultComment = $ctResult->comment;
 
         if ($ctResult->inactive == 1) {
-            return false;
+            Yii::log('Need admin approval for "isAllowUser": ' . $ctResult->comment, CLogger::LEVEL_INFO, 'ext.cleantalk');
+            return true;
         }
 
         return $ctResult->allow == 1;
@@ -97,6 +98,11 @@ class CleanTalkApi extends CApplicationComponent
          */
         $ctResult = $this->sendRequest($ctRequest, 'isAllowMessage');
         $this->lastResultComment = $ctResult->comment;
+
+        if ($ctResult->inactive == 1) {
+            Yii::log('Need admin approval for "isAllowMessage": ' . $ctResult->comment, CLogger::LEVEL_INFO, 'ext.cleantalk');
+            return true;
+        }
 
         return $ctResult->allow == 1;
     }

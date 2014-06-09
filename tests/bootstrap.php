@@ -1,6 +1,7 @@
 <?php
 
 require_once(__DIR__ . '/../vendor/yiisoft/yii/framework/yiit.php');
+require_once(__DIR__ . '/../vendor/autoload.php');
 
 Yii::createWebApplication(
     array(
