@@ -99,7 +99,8 @@ class CleanTalkApiTest extends PHPUnit_Framework_TestCase
         $string = $this->component->checkJsHiddenField();
         $this->assertStringStartsWith('<input', $string);
         $this->assertContains('"ct_checkjs"', $string);
-        $this->assertTrue(Yii::app()->clientScript->isScriptRegistered('cleantalk_javascript', CClientScript::POS_END));
+        $id = $this->component->checkJsHtmlId;
+        $this->assertTrue(Yii::app()->clientScript->isScriptRegistered('cleantalk_javascript_' . $id, CClientScript::POS_END));
     }
 
     public function testGetFormSubmitTime()

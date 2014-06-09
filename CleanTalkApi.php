@@ -1,5 +1,8 @@
 <?php
 
+// @todo: remove if used composer autoload
+require_once('cleantalk.class.php');
+
 /**
  * CleanTalk API application component.
  * Required set apiKey property.
@@ -33,6 +36,12 @@ class CleanTalkApi extends CApplicationComponent
     public $responseLang = 'en';
 
     /**
+     * Check js hidden field ID
+     * @var string
+     */
+    public $checkJsHtmlId;
+
+    /**
      * API last result comment (deny message)
      * @var string
      */
@@ -45,8 +54,11 @@ class CleanTalkApi extends CApplicationComponent
     public function init()
     {
         parent::init();
-        if (empty($this->apiKey)) {
+        if (is_null($this->apiKey)) {
             throw new CException(Yii::t('cleantalk', 'CleanTalkApi configuration must have "apiKey" value'));
+        }
+        if (is_null($this->checkJsHtmlId)) {
+            $this->checkJsHtmlId = md5(rand(0, 1000));
         }
     }
 
@@ -71,8 +83,11 @@ class CleanTalkApi extends CApplicationComponent
         $this->lastResultComment = $ctResult->comment;
 
         if ($ctResult->inactive == 1) {
-            Yii::log('Need admin approval for "isAllowUser": ' . $ctResult->comment, CLogger::LEVEL_INFO, 'ext.cleantalk');
-            return true;
+            Yii::log(
+                'Need admin approval for "isAllowUser": ' . $ctResult->comment,
+                CLogger::LEVEL_INFO,
+                'ext.cleantalk'
+            );
         }
 
         return $ctResult->allow == 1;
@@ -100,8 +115,11 @@ class CleanTalkApi extends CApplicationComponent
         $this->lastResultComment = $ctResult->comment;
 
         if ($ctResult->inactive == 1) {
-            Yii::log('Need admin approval for "isAllowMessage": ' . $ctResult->comment, CLogger::LEVEL_INFO, 'ext.cleantalk');
-            return true;
+            Yii::log(
+                'Need admin approval for "isAllowMessage": ' . $ctResult->comment,
+                CLogger::LEVEL_INFO,
+                'ext.cleantalk'
+            );
         }
 
         return $ctResult->allow == 1;
@@ -141,11 +159,11 @@ class CleanTalkApi extends CApplicationComponent
     {
         Yii::app()->clientScript
             ->registerScript(
-                'cleantalk_javascript',
-                'document.getElementById("ct_checkjs").value="' . $this->getCheckJsCode() . '";',
+                'cleantalk_javascript_' . $this->checkJsHtmlId,
+                'document.getElementById("' . $this->checkJsHtmlId . '").value="' . $this->getCheckJsCode() . '";',
                 CClientScript::POS_END
             );
-        return CHtml::hiddenField('ct_checkjs', '-1');
+        return CHtml::hiddenField('ct_checkjs', '-1', array('id' => $this->checkJsHtmlId));
     }
 
     /**
