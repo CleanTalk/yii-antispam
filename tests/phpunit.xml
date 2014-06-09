@@ -1,0 +1,14 @@
+<phpunit bootstrap="bootstrap.php"
+		colors="false"
+		convertErrorsToExceptions="true"
+		convertNoticesToExceptions="true"
+		convertWarningsToExceptions="true"
+		stopOnFailure="false">
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <file>../CleanTalkApi.php</file>
+            <file>../CleanTalkValidator.php</file>
+        </whitelist>
+    </filter>
+</phpunit>
+
