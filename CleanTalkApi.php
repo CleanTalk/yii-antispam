@@ -1,6 +1,5 @@
 <?php
 
-require_once (__DIR__ . '/cleantalk.class.php');
 /**
  * CleanTalk API application component.
  * Required set apiKey property.
@@ -59,8 +58,6 @@ class CleanTalkApi extends CApplicationComponent
      */
     public function isAllowUser($email = '', $nickName = '')
     {
-        $ct = new Cleantalk();
-        $ct->server_url = $this->apiUrl;
 
         $ctRequest = $this->createRequest();
         $ctRequest->sender_nickname = $nickName;
@@ -69,7 +66,7 @@ class CleanTalkApi extends CApplicationComponent
         /**
          * @var CleantalkResponse $ctResult CleanTalk API call result
          */
-        $ctResult = $ct->isAllowUser($ctRequest);
+        $ctResult = $this->sendRequest($ctRequest, 'isAllowUser');
 
         $this->lastResultComment = $ctResult->comment;
 
@@ -89,8 +86,6 @@ class CleanTalkApi extends CApplicationComponent
      */
     public function isAllowMessage($message, $email = '', $nickName = '')
     {
-        $ct = new Cleantalk();
-        $ct->server_url = $this->apiUrl;
 
         $ctRequest = $this->createRequest();
         $ctRequest->message = $message;
@@ -100,7 +95,7 @@ class CleanTalkApi extends CApplicationComponent
         /**
          * @var CleantalkResponse $ctResult CleanTalk API call result
          */
-        $ctResult = $ct->isAllowMessage($ctRequest);
+        $ctResult = $this->sendRequest($ctRequest, 'isAllowMessage');
         $this->lastResultComment = $ctResult->comment;
 
         return $ctResult->allow == 1;
@@ -139,9 +134,11 @@ class CleanTalkApi extends CApplicationComponent
     public function checkJsHiddenField()
     {
         Yii::app()->clientScript
-            ->registerScript('id'.__FILE__,
-                'document.getElementById("ct_checkjs").value="'. $this->getCheckJsCode() . '";',
-                CClientScript::POS_END);
+            ->registerScript(
+                'cleantalk_javascript',
+                'document.getElementById("ct_checkjs").value="' . $this->getCheckJsCode() . '";',
+                CClientScript::POS_END
+            );
         return CHtml::hiddenField('ct_checkjs', '-1');
     }
 
@@ -151,7 +148,7 @@ class CleanTalkApi extends CApplicationComponent
      */
     public function getFormSubmitTime()
     {
-        $startTime =  Yii::app()->user->getState(self::FORM_SUBMIT_START_TIME);
+        $startTime = Yii::app()->user->getState(self::FORM_SUBMIT_START_TIME);
         return $startTime > 0 ? time() - $startTime : null;
     }
 
@@ -187,5 +184,22 @@ class CleanTalkApi extends CApplicationComponent
             )
         );
         return $ctRequest;
+    }
+
+    /**
+     * @param $request
+     * @param $method
+     * @return mixed
+     * @throws InvalidArgumentException
+     */
+    protected function sendRequest($request, $method)
+    {
+        $ct = new Cleantalk();
+        $ct->server_url = $this->apiUrl;
+        if ($method != 'isAllowMessage' && $method != 'isAllowUser') {
+            throw new InvalidArgumentException('Method unknown');
+        }
+
+        return $ct->$method($request);
     }
 }
