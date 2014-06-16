@@ -74,6 +74,7 @@ class CleanTalkValidator extends CValidator
      * Check validator configuration
      * @param CModel $object
      * @throws CException
+     * @throws DomainException
      */
     protected function checkValidateConfig(CModel $object)
     {
@@ -88,18 +89,6 @@ class CleanTalkValidator extends CValidator
                 'Validation check property is not defined or invalid'
             ));
         }
-        // @todo:
-        /* elseif (!property_exists($object, $this->emailAttribute)) {
-                    throw new CException(Yii::t(
-                        'cleantalk',
-                        'Validation "emailAttribute" property is not defined or invalid'
-                    ));
-                } elseif (!property_exists($object, $this->nickNameAttribute)) {
-                    throw new CException(Yii::t(
-                        'cleantalk',
-                        'Validation "nickNameAttribute" property is not defined or invalid'
-                    ));
-                }*/
     }
 
     /**
