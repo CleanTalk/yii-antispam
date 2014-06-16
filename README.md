@@ -9,9 +9,9 @@ Yii 1.1 or above
 
 ##Usage
 
-1. Get access key on http://cleantalk.org/register?platform=yii
-2. Extract content from archive under protected/extensions/yii-antispam 
-3. Open your application configuration in protected/config/main.php and modify components section:
+1) Get access key on http://cleantalk.org/register?platform=yii
+2) Extract content from archive under protected/extensions/yii-antispam 
+3) Open your application configuration in protected/config/main.php and modify components section:
 ~~~
 // application components
 'components'=>array(
@@ -23,7 +23,7 @@ Yii 1.1 or above
     ...
 ),
 ~~~
-4. Add validator in your model, for example ContactForm
+4) Add validator in your model, for example ContactForm
 ~~~
 class ContactForm extends CFormModel
 {
