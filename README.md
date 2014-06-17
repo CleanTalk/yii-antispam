@@ -44,7 +44,7 @@ class ContactForm extends CFormModel
                     'check'=>'message', /* Check type message or user */
                     'emailAttribute'=>'email',  
                     'nickNameAttribute'=>'name',
-                    'on'=>'insert'),
+                    /*'on'=>'insert' if ActiveRecord using */),
             ...
         );
     }
