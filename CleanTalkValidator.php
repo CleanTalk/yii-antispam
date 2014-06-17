@@ -89,7 +89,7 @@ class CleanTalkValidator extends CValidator
                 'cleantalk',
                 'Application component "' . $this->apiComponentId . '" is not defined'
             ));
-        } elseif (!in_array($this->check, [self::CHECK_MESSAGE, self::CHECK_USER])) {
+        } elseif (!in_array($this->check, array(self::CHECK_MESSAGE, self::CHECK_USER))) {
             throw new DomainException(Yii::t(
                 'cleantalk',
                 'Validation check property is not defined or invalid'
