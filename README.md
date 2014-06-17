@@ -48,6 +48,16 @@ class ContactForm extends CFormModel
     ...
 }
 ~~~
+5) In form view add special hidden element
+~~~
+<?php $form=$this->beginWidget('CActiveForm', array(
+    ...
+    <?php echo Yii::app()->cleanTalk->checkJsHiddenField()?>
+    ...
+    <?php echo CHtml::submitButton('Submit'); ?>
+    ...
+<?php $this->endWidget(); ?>
+~~~
 
 ##License
 GNU General Public License
