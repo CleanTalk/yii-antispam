@@ -56,8 +56,14 @@ class CleanTalkValidator extends CValidator
          * @var CleanTalkApi $api
          */
         $api = Yii::app()->getComponent($this->apiComponentId);
-        $email = property_exists($object, $this->emailAttribute) ? $object->{$this->emailAttribute} : '';
-        $nick = property_exists($object, $this->nickNameAttribute) ? $object->{$this->nickNameAttribute} : '';
+
+        $email = $nick = '';
+        if ($this->emailAttribute) {
+            $email = $object->{$this->emailAttribute};
+        }
+        if ($this->nickNameAttribute) {
+            $nick = $object->{$this->nickNameAttribute};
+        }
 
         if (self::CHECK_MESSAGE == $this->check) {
             if (!$api->isAllowMessage($object->$attribute, $email, $nick)) {

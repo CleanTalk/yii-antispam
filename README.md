@@ -43,7 +43,8 @@ class ContactForm extends CFormModel
                     'ext.yii-antispam.CleanTalkValidator', 
                     'check'=>'message', /* Check type message or user */
                     'emailAttribute'=>'email',  
-                    'nickNameAttribute'=>'name'),
+                    'nickNameAttribute'=>'name',
+                    'on'=>'insert'),
             ...
         );
     }
