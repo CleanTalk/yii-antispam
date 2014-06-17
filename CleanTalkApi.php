@@ -1,6 +1,6 @@
 <?php
 
-// @todo: remove if used composer autoload
+// @todo: remove if composer autoloading used
 require_once('cleantalk.class.php');
 
 /**
@@ -152,11 +152,13 @@ class CleanTalkApi extends CApplicationComponent
     }
 
     /**
-     * Generate CleanTalk check js hidden form element
+     * Generate CleanTalk check js hidden form element.
+     * Set form submit time.
      * @return string
      */
     public function checkJsHiddenField()
     {
+        $this->startFormSubmitTime();
         Yii::app()->clientScript
             ->registerScript(
                 'cleantalk_javascript_' . $this->checkJsHtmlId,
@@ -167,7 +169,7 @@ class CleanTalkApi extends CApplicationComponent
     }
 
     /**
-     * Get form submit time in seconds
+     * Get form submit time in seconds.
      * @return int|null
      */
     public function getFormSubmitTime()
@@ -187,7 +189,7 @@ class CleanTalkApi extends CApplicationComponent
     }
 
     /**
-     * Create request for CleanTalk API
+     * Create request for CleanTalk API.
      * @return CleantalkRequest
      */
     protected function createRequest()
