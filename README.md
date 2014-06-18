@@ -60,6 +60,7 @@ class ContactForm extends CFormModel
     <?php echo CHtml::submitButton('Submit'); ?>
     ...
 <?php $this->endWidget(); ?>
+
 ~~~
 
 ##License
