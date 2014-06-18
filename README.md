@@ -3,7 +3,7 @@ Anti-spam by CleanTalk extension with protection against spam bots and manual sp
 
 No Captcha, no questions, no counting animals, no puzzles, no math.
 
-[![Build Status](https://travis-ci.org/cleantalk/yii-antispam.svg?branch=master)](https://travis-ci.org/cleantalk/yii-antispam)
+[![Build Status](https://travis-ci.org/CleanTalk/yii-antispam.svg)](https://travis-ci.org/cleantalk/yii-antispam)
 
 ##Requirements
 
