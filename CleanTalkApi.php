@@ -162,7 +162,7 @@ class CleanTalkApi extends CApplicationComponent
         Yii::app()->clientScript
             ->registerScript(
                 'cleantalk_javascript_' . $this->checkJsHtmlId,
-                'document.getElementById("' . $this->checkJsHtmlId . '").value="' . $this->getCheckJsCode() . '";',
+                'document.getElementById("' . $this->checkJsHtmlId . '").value=document.getElementById("' . $this->checkJsHtmlId . '").value.replace(-1,"' . $this->getCheckJsCode() . '");',
                 CClientScript::POS_END
             );
         return CHtml::hiddenField('ct_checkjs', '-1', array('id' => $this->checkJsHtmlId));
