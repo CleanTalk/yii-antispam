@@ -5,7 +5,7 @@ No Captcha, no questions, no counting animals, no puzzles, no math.
 
 [![Build Status](https://travis-ci.org/CleanTalk/yii-antispam.svg)](https://travis-ci.org/cleantalk/yii-antispam)
 
-##Requirements
+## Requirements
 
 * Yii 1.1 or above
 * CleanTalk account https://cleantalk.org/register?product=anti-spam
