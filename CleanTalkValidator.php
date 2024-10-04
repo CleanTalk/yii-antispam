@@ -6,8 +6,8 @@
  * Required set check property.
  *
  * @version 1.0.1
- * @author CleanTalk (welcome@cleantalk.ru)
- * @copyright (C) 2013 Сleantalk team (http://cleantalk.org)
+ * @author CleanTalk (welcome@cleantalk.org)
+ * @copyright (C) 2013 Сleantalk team (https://cleantalk.org)
  * @license GNU/GPL: http://www.gnu.org/copyleft/gpl.html
  */
 class CleanTalkValidator extends CValidator

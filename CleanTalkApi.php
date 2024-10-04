@@ -8,8 +8,8 @@ require_once('cleantalk.class.php');
  * Required set apiKey property.
  *
  * @version 1.1.0
- * @author CleanTalk (welcome@cleantalk.ru)
- * @copyright (C) 2013 Сleantalk team (http://cleantalk.org)
+ * @author CleanTalk (welcome@cleantalk.org)
+ * @copyright (C) 2013 Сleantalk team (https://cleantalk.org)
  * @license GNU/GPL: http://www.gnu.org/copyleft/gpl.html
  */
 class CleanTalkApi extends CApplicationComponent
@@ -27,7 +27,7 @@ class CleanTalkApi extends CApplicationComponent
      * API URL
      * @var string
      */
-    public $apiUrl = 'http://moderate.cleantalk.ru';
+    public $apiUrl = 'https://moderate.cleantalk.org';
 
     /**
      * API response lang en|ru

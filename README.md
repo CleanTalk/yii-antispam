@@ -12,7 +12,7 @@ No Captcha, no questions, no counting animals, no puzzles, no math.
 
 ##Usage
 
-1) Get access key on http://cleantalk.org/register?platform=yii
+1) Get access key on https://cleantalk.org/register?platform=yii
 
 2) Extract content from archive under protected/extensions/yii-antispam
 
@@ -69,5 +69,5 @@ GNU General Public License
 
 ##Resources
 
- * http://cleantalk.org/
+ * https://cleantalk.org/
  * https://github.com/CleanTalk/yii-antispam
