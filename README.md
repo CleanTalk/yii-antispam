@@ -10,6 +10,10 @@ No Captcha, no questions, no counting animals, no puzzles, no math.
 * Yii 1.1 or above
 * CleanTalk account https://cleantalk.org/register?product=anti-spam
 
+### Websites that trust CleanTalk!
+
+![CleanTalk Anti-Spam Rating](https://cleantalk.org/webpack/img/cleantalk_rating.png)
+
 ##Usage
 
 1) Get access key on https://cleantalk.org/register?platform=yii
