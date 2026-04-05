@@ -1,9 +1,11 @@
-##Yii-antispam
+[![Build Status](https://travis-ci.org/CleanTalk/yii-antispam.svg)](https://travis-ci.org/cleantalk/yii-antispam)
+
+## Yii-antispam
 Anti-spam by CleanTalk extension with protection against spam bots and manual spam.
 
 No Captcha, no questions, no counting animals, no puzzles, no math.
 
-[![Build Status](https://travis-ci.org/CleanTalk/yii-antispam.svg)](https://travis-ci.org/cleantalk/yii-antispam)
+If you find this project useful, please consider starring ⭐ it on GitHub — it helps us grow and support development!
 
 ## Requirements
 
